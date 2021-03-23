@@ -7,7 +7,7 @@ def get_repository_info(owner, repository_name):
                'Authorization': 'token ' + settings.GITHUB_KEY}
 
     response = requests.get(url=url, headers=headers)
-    response_json = response.json
+    response_json = response.json()
     response_status = response.status_code
     
     return response_status, response_json
