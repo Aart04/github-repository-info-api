@@ -11,21 +11,33 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8n6nm+^)p*i)q6lnqm^&^8b+pjcu%*s!p(2luc_va&=3)db6+1'
+SECRET_KEY = env('SECRET_KEY')
+
+# Personal API KEY from Github
+GITHUB_KEY = env('GITHUB_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
 
 
 # Application definition
@@ -114,6 +126,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Cursom Rest Framework exception handler
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'repository.utils.custom_exception_handler'
+}
 
 
 # Static files (CSS, JavaScript, Images)
