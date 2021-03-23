@@ -12,11 +12,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-env = environ.Env()
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
 environ.Env.read_env()
 
 
@@ -30,9 +35,9 @@ SECRET_KEY = env('SECRET_KEY')
 GITHUB_KEY = env('GITHUB_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
 
 
 # Application definition
