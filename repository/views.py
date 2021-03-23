@@ -27,7 +27,7 @@ class RepositoryDetail(APIView):
             else:
                 return Response(data=None, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         elif api_status == status.HTTP_404_NOT_FOUND:
-            raise Http404
+            raise Http404()
         elif api_status == status.HTTP_503_SERVICE_UNAVAILABLE:
             raise ServiceUnavailable
         else:
