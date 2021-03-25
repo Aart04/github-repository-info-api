@@ -1,5 +1,5 @@
 # github-repo-info
-Simple REST API for getting informations about repository from [GitHub API](https://docs.github.com/en/rest/reference/repos)
+Simple REST API for getting informations about repository from [GitHub API](https://docs.github.com/en/rest/reference/repos). This app was made with Django and Django REST framework.
 
 ## Setting up
 1. Change file .env.production to .env and fill in SECRET_KEY with random string of 50 characters. 
